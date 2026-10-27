@@ -1,0 +1,37 @@
+# Terraform providers and modules
+**/.terraform/*
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+
+# Variable files containing private values
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+!*.tfvars.json.example
+
+# Saved plans and crash logs
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+
+# Local Terraform configuration
+.terraformrc
+terraform.rc
+
+# Environment files and private keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
