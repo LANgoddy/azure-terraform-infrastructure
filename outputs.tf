@@ -72,3 +72,8 @@ output "windows_availability_set_name" {
   description = "Name of the Windows availability set."
   value       = module.vmwindows.availability_set_name
 }
+
+output "data_disk_names" {
+  description = "Data disk names mapped to their VM names."
+  value       = module.datadisk.disk_names
+}

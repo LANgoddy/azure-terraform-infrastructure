@@ -80,3 +80,28 @@ module "vmwindows" {
 
   depends_on = [module.network]
 }
+
+module "datadisk" {
+  source = "./modules/datadisk-N10034919"
+
+  resource_group_name = module.rgroup.resource_group_name
+  location            = module.rgroup.location
+  tags                = local.common_tags
+
+  vm_disks = merge(
+    {
+      for name, settings in var.linux_vms :
+      name => {
+        vm_id = module.vmlinux.vm_ids[name]
+        zone  = settings.zone
+      }
+    },
+    {
+      for index in range(var.windows_vm_count) :
+      "${var.windows_vm_name_prefix}-${index + 1}" => {
+        vm_id = module.vmwindows.vm_ids[index]
+        zone  = null
+      }
+    }
+  )
+}
