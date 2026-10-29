@@ -47,3 +47,28 @@ output "linux_public_ip_addresses" {
   description = "Linux VM public IP addresses."
   value       = module.vmlinux.public_ip_addresses
 }
+
+output "windows_hostnames" {
+  description = "Windows VM hostnames."
+  value       = module.vmwindows.hostnames
+}
+
+output "windows_fqdns" {
+  description = "Windows VM fully qualified domain names."
+  value       = module.vmwindows.fqdns
+}
+
+output "windows_private_ip_addresses" {
+  description = "Windows VM private IP addresses."
+  value       = module.vmwindows.private_ip_addresses
+}
+
+output "windows_public_ip_addresses" {
+  description = "Windows VM public IP addresses."
+  value       = module.vmwindows.public_ip_addresses
+}
+
+output "windows_availability_set_name" {
+  description = "Name of the Windows availability set."
+  value       = module.vmwindows.availability_set_name
+}

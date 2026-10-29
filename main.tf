@@ -59,3 +59,24 @@ module "vmlinux" {
 
   depends_on = [module.network]
 }
+
+module "vmwindows" {
+  source = "./modules/vmwindows-N10034919"
+
+  resource_group_name = module.rgroup.resource_group_name
+  location            = module.rgroup.location
+  subnet_id           = module.network.subnet_id
+
+  vm_count              = var.windows_vm_count
+  vm_name_prefix        = var.windows_vm_name_prefix
+  dns_label_prefix      = var.windows_dns_label_prefix
+  availability_set_name = var.windows_availability_set_name
+  vm_size               = var.windows_vm_size
+  admin_username        = var.windows_admin_username
+  admin_password        = var.windows_admin_password
+
+  boot_diagnostics_storage_uri = module.common.storage_account_primary_blob_endpoint
+  tags                         = local.common_tags
+
+  depends_on = [module.network]
+}

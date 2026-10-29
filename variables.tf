@@ -106,3 +106,44 @@ variable "ssh_private_key_path" {
   description = "Local path to the SSH private key for the hostname provisioner."
   type        = string
 }
+
+variable "windows_vm_count" {
+  description = "Number of Windows VMs."
+  type        = number
+  default     = 1
+}
+
+variable "windows_vm_name_prefix" {
+  description = "Prefix for Windows VM names."
+  type        = string
+  default     = "4919-win"
+}
+
+variable "windows_dns_label_prefix" {
+  description = "Prefix for Windows VM public DNS labels."
+  type        = string
+  default     = "4919-lngoddy-win"
+}
+
+variable "windows_availability_set_name" {
+  description = "Name of the Windows availability set."
+  type        = string
+  default     = "4919-windows-avs"
+}
+
+variable "windows_vm_size" {
+  description = "Azure VM size for the Windows VMs."
+  type        = string
+}
+
+variable "windows_admin_username" {
+  description = "Administrator username for the Windows VMs."
+  type        = string
+  default     = "azureadmin"
+}
+
+variable "windows_admin_password" {
+  description = "Administrator password for the Windows VMs."
+  type        = string
+  sensitive   = true
+}
