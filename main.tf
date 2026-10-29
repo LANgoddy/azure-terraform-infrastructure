@@ -39,3 +39,23 @@ module "common" {
   storage_account_name         = var.storage_account_name
   tags                         = local.common_tags
 }
+
+module "vmlinux" {
+  source = "./modules/vmlinux-N10034919"
+
+  resource_group_name = module.rgroup.resource_group_name
+  location            = module.rgroup.location
+  subnet_id           = module.network.subnet_id
+
+  linux_vms      = var.linux_vms
+  vm_size        = var.linux_vm_size
+  admin_username = var.linux_admin_username
+
+  admin_ssh_public_key = file(pathexpand(var.ssh_public_key_path))
+  ssh_private_key_path = var.ssh_private_key_path
+
+  boot_diagnostics_storage_uri = module.common.storage_account_primary_blob_endpoint
+  tags                         = local.common_tags
+
+  depends_on = [module.network]
+}
