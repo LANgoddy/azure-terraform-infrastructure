@@ -77,3 +77,13 @@ output "data_disk_names" {
   description = "Data disk names mapped to their VM names."
   value       = module.datadisk.disk_names
 }
+
+output "load_balancer_name" {
+  description = "Name of the public load balancer."
+  value       = module.loadbalancer.load_balancer_name
+}
+
+output "load_balancer_public_ip" {
+  description = "Public IP address of the load balancer."
+  value       = module.loadbalancer.public_ip_address
+}

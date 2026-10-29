@@ -150,3 +150,9 @@ variable "windows_admin_password" {
   type        = string
   sensitive   = true
 }
+
+variable "load_balancer_name" {
+  description = "Name of the public load balancer."
+  type        = string
+  default     = "4919-lb"
+}

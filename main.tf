@@ -105,3 +105,13 @@ module "datadisk" {
     }
   )
 }
+
+module "loadbalancer" {
+  source = "./modules/loadbalancer-N10034919"
+
+  resource_group_name   = module.rgroup.resource_group_name
+  location              = module.rgroup.location
+  load_balancer_name    = var.load_balancer_name
+  network_interface_ids = module.vmlinux.network_interface_ids
+  tags                  = local.common_tags
+}
