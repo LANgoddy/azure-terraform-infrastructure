@@ -7,6 +7,7 @@ variable "resource_group_name" {
 variable "location" {
   description = "Azure region for the project infrastructure."
   type        = string
+  default     = "centralus"
 }
 
 variable "vnet_name" {
@@ -89,6 +90,7 @@ variable "linux_vms" {
 variable "linux_vm_size" {
   description = "Azure VM size for the Linux VMs."
   type        = string
+  default     = "Standard_B2als_v2"
 }
 
 variable "linux_admin_username" {
@@ -134,6 +136,7 @@ variable "windows_availability_set_name" {
 variable "windows_vm_size" {
   description = "Azure VM size for the Windows VMs."
   type        = string
+  default     = "Standard_B2as_v2"
 }
 
 variable "windows_admin_username" {
