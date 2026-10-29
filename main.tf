@@ -28,3 +28,14 @@ module "network" {
   admin_source_cidr       = var.admin_source_cidr
   tags                    = local.common_tags
 }
+
+module "common" {
+  source = "./modules/common-N10034919"
+
+  resource_group_name          = module.rgroup.resource_group_name
+  location                     = module.rgroup.location
+  log_analytics_workspace_name = var.log_analytics_workspace_name
+  recovery_services_vault_name = var.recovery_services_vault_name
+  storage_account_name         = var.storage_account_name
+  tags                         = local.common_tags
+}

@@ -43,3 +43,21 @@ variable "admin_source_cidr" {
   description = "Trusted public IP range allowed administrative access."
   type        = string
 }
+
+variable "log_analytics_workspace_name" {
+  description = "Name of the Log Analytics workspace."
+  type        = string
+  default     = "4919-LAW"
+}
+
+variable "recovery_services_vault_name" {
+  description = "Name of the Recovery Services vault."
+  type        = string
+  default     = "4919-RSV"
+}
+
+variable "storage_account_name" {
+  description = "Name of the storage account for VM boot diagnostics."
+  type        = string
+  default     = "4919lucngoddydiag"
+}
