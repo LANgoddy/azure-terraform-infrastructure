@@ -14,3 +14,17 @@ module "rgroup" {
   location            = var.location
   tags                = local.common_tags
 }
+
+module "network" {
+  source = "./modules/network-N10034919"
+
+  resource_group_name     = module.rgroup.resource_group_name
+  location                = module.rgroup.location
+  vnet_name               = var.vnet_name
+  vnet_address_space      = var.vnet_address_space
+  subnet_name             = var.subnet_name
+  subnet_address_prefixes = var.subnet_address_prefixes
+  nsg_name                = var.nsg_name
+  admin_source_cidr       = var.admin_source_cidr
+  tags                    = local.common_tags
+}
