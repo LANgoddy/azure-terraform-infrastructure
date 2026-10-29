@@ -54,7 +54,7 @@ variable "log_analytics_workspace_name" {
 variable "recovery_services_vault_name" {
   description = "Name of the Recovery Services vault."
   type        = string
-  default     = "4919-RSV"
+  default     = "n4919-RSV"
 }
 
 variable "storage_account_name" {
@@ -74,15 +74,15 @@ variable "linux_vms" {
   default = {
     "4919-linux-1" = {
       zone      = "1"
-      dns_label = "4919-lngoddy-linux-1"
+      dns_label = "n4919-lngoddy-linux-1"
     }
     "4919-linux-2" = {
       zone      = "2"
-      dns_label = "4919-lngoddy-linux-2"
+      dns_label = "n4919-lngoddy-linux-2"
     }
     "4919-linux-3" = {
       zone      = "3"
-      dns_label = "4919-lngoddy-linux-3"
+      dns_label = "n4919-lngoddy-linux-3"
     }
   }
 }
@@ -124,7 +124,7 @@ variable "windows_vm_name_prefix" {
 variable "windows_dns_label_prefix" {
   description = "Prefix for Windows VM public DNS labels."
   type        = string
-  default     = "4919-lngoddy-win"
+  default     = "n4919-lngoddy-win"
 }
 
 variable "windows_availability_set_name" {
