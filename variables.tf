@@ -156,3 +156,36 @@ variable "load_balancer_name" {
   type        = string
   default     = "4919-lb"
 }
+
+variable "database_server_name" {
+  description = "Name of the PostgreSQL Flexible Server."
+  type        = string
+  default     = "n10034919-pg"
+}
+
+variable "database_admin_username" {
+  description = "PostgreSQL administrator username."
+  type        = string
+  default     = "pgadmin"
+}
+
+variable "database_admin_password" {
+  description = "PostgreSQL administrator password."
+  type        = string
+  sensitive   = true
+}
+
+variable "database_version" {
+  description = "PostgreSQL major version."
+  type        = string
+}
+
+variable "database_sku_name" {
+  description = "Compute SKU for the PostgreSQL Flexible Server."
+  type        = string
+}
+
+variable "database_storage_mb" {
+  description = "Allocated PostgreSQL storage in megabytes."
+  type        = number
+}

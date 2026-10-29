@@ -115,3 +115,20 @@ module "loadbalancer" {
   network_interface_ids = module.vmlinux.network_interface_ids
   tags                  = local.common_tags
 }
+
+module "database" {
+  source = "./modules/database-N10034919"
+
+  resource_group_name = module.rgroup.resource_group_name
+  location            = module.rgroup.location
+  server_name         = var.database_server_name
+
+  admin_username = var.database_admin_username
+  admin_password = var.database_admin_password
+
+  postgresql_version = var.database_version
+  sku_name           = var.database_sku_name
+  storage_mb         = var.database_storage_mb
+
+  tags = local.common_tags
+}

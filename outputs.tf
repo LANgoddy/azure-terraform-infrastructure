@@ -87,3 +87,8 @@ output "load_balancer_public_ip" {
   description = "Public IP address of the load balancer."
   value       = module.loadbalancer.public_ip_address
 }
+
+output "database_server_name" {
+  description = "Name of the PostgreSQL Flexible Server."
+  value       = module.database.server_name
+}
