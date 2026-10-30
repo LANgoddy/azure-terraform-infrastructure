@@ -34,7 +34,7 @@ resource "azurerm_linux_virtual_machine" "this" {
   computer_name       = each.key
   location            = var.location
   resource_group_name = var.resource_group_name
-  size                = var.vm_size
+  size                = coalesce(each.value.vm_size, var.vm_size)
   zone                = each.value.zone
   admin_username      = var.admin_username
 
@@ -56,10 +56,10 @@ resource "azurerm_linux_virtual_machine" "this" {
   }
 
   source_image_reference {
-    publisher = var.image_publisher
-    offer     = var.image_offer
-    sku       = var.image_sku
-    version   = var.image_version
+    publisher = coalesce(each.value.image_publisher, var.image_publisher)
+    offer     = coalesce(each.value.image_offer, var.image_offer)
+    sku       = coalesce(each.value.image_sku, var.image_sku)
+    version   = coalesce(each.value.image_version, var.image_version)
   }
 
   boot_diagnostics {

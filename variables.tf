@@ -64,22 +64,35 @@ variable "storage_account_name" {
 }
 
 variable "linux_vms" {
-  description = "Linux VM names, availability zones, and DNS labels."
+  description = "Linux VM names, zones, DNS labels, and optional size and image overrides."
 
   type = map(object({
-    zone      = string
-    dns_label = string
+    zone            = string
+    dns_label       = string
+    vm_size         = optional(string)
+    image_publisher = optional(string)
+    image_offer     = optional(string)
+    image_sku       = optional(string)
+    image_version   = optional(string)
   }))
 
   default = {
     "4919-linux-1" = {
       zone      = "1"
       dns_label = "n4919-lngoddy-linux-1"
+      vm_size   = "Standard_B2as_v2"
     }
+
     "4919-linux-2" = {
-      zone      = "2"
-      dns_label = "n4919-lngoddy-linux-2"
+      zone            = "2"
+      dns_label       = "n4919-lngoddy-linux-2"
+      vm_size         = "Standard_F2ads_v7"
+      image_publisher = "Canonical"
+      image_offer     = "ubuntu-24_04-lts"
+      image_sku       = "server"
+      image_version   = "24.04.202610210"
     }
+
     "4919-linux-3" = {
       zone      = "3"
       dns_label = "n4919-lngoddy-linux-3"

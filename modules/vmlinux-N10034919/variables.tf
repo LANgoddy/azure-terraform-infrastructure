@@ -19,15 +19,21 @@ variable "tags" {
 }
 
 variable "linux_vms" {
-  description = "Linux VM names mapped to their availability zones and DNS labels."
+  description = "Linux VM names, zones, DNS labels, and optional size and image overrides."
+
   type = map(object({
-    zone      = string
-    dns_label = string
+    zone            = string
+    dns_label       = string
+    vm_size         = optional(string)
+    image_publisher = optional(string)
+    image_offer     = optional(string)
+    image_sku       = optional(string)
+    image_version   = optional(string)
   }))
 }
 
 variable "vm_size" {
-  description = "Azure VM size for the Linux VMs."
+  description = "Default Azure VM size for Linux VMs without an override."
   type        = string
 }
 
@@ -49,25 +55,25 @@ variable "boot_diagnostics_storage_uri" {
 variable "image_publisher" {
   description = "Publisher of the Linux VM image."
   type        = string
-  default     = "OpenLogic"
+  default     = "Canonical"
 }
 
 variable "image_offer" {
   description = "Offer containing the Linux VM image."
   type        = string
-  default     = "CentOS"
+  default     = "ubuntu-24_04-lts"
 }
 
 variable "image_sku" {
   description = "SKU of the Linux VM image."
   type        = string
-  default     = "8_2-gen2"
+  default     = "server"
 }
 
 variable "image_version" {
   description = "Version of the Linux VM image."
   type        = string
-  default     = "8.2.2020111801"
+  default     = "24.04.202610210"
 }
 
 variable "ssh_private_key_path" {
